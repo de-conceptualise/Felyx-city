@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello, World! - A-Frame</title>
+        <meta name="description" content="Felyx Fixation">
+        <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+        <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+        <style>
+            model-viewer {
+                position: absolute;
+                display: none;
+                width: 300px;
+                height: 400px;
+                z-index: 1;
+            }
+            model-viewer::part(default-progress-bar){
+                width: 0%;
+            }
+
+            body {
+                overflow: hidden;
+            } 
+            html {
+                background-color: black;
+                overflow: hidden;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="modelViewersContainer"></div>
+
+
+        <script>
+            const container = document.getElementById('modelViewersContainer');
+            let modelsToShow = [];
+
+            for (let i = 0; i < 75; i++) {
+                const modelViewer = document.createElement('model-viewer');
+                modelViewer.setAttribute('style', 'display: none; position: absolute;');
+                modelViewer.setAttribute('src', 'public/Felyx.glb');
+                modelViewer.setAttribute('auto-rotate', '');
+                modelViewer.setAttribute('auto-rotate-delay', '0');
+                const randomRotationSpeed = Math.floor(Math.random() * 720) - 360; // This now includes negative values
+                modelViewer.setAttribute('rotation-per-second', `${randomRotationSpeed}deg`);
+                modelViewer.setAttribute('camera-controls', '');
+                modelViewer.setAttribute('disable-zoom', '');
+                modelViewer.setAttribute('touch-action', 'none');
+                container.appendChild(modelViewer);
+                modelsToShow.push(modelViewer);
+            }
+
+            window.addEventListener('click', function() {
+                if (modelsToShow.length > 0) {
+                    const modelViewer = modelsToShow.shift();
+                    const modelWidth = 300; // Correct width
+                    const modelHeight = 400; // Correct height
+                    const maxWidth = window.innerWidth - modelWidth; // Prevents overflow on the x-axis
+                    const maxHeight = window.innerHeight - modelHeight; // Prevents overflow on the y-axis
+                    const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
+                    const randomY = Math.max(0, Math.floor(Math.random() * maxHeight));
+                    modelViewer.style.left = `${randomX}px`;
+                    modelViewer.style.top = `${randomY}px`;
+                    modelViewer.style.display = 'block';
+                }
+            })
+            window.addEventListener('contextmenu', function(event) {
+                event.preventDefault(); // Prevent the default right-click menu
+                // Reset logic here
+                // For example, remove all model-viewer elements from the container
+                const container = document.getElementById('modelViewersContainer');
+                while (container.firstChild) {
+                    container.removeChild(container.firstChild);
+                }
+                // Optionally, repopulate modelsToShow array if you plan to add models again
+                modelsToShow = [];
+                for (let i = 0; i < 75; i++) {
+                    const modelViewer = document.createElement('model-viewer');
+                    modelViewer.setAttribute('style', 'display: none; position: absolute;');
+                    modelViewer.setAttribute('src', 'public/Felyx.glb');
+                    modelViewer.setAttribute('auto-rotate', '');
+                    modelViewer.setAttribute('auto-rotate-delay', '0');
+                    const randomRotationSpeed = Math.floor(Math.random() * 720) - 360; // This now includes negative values
+                    modelViewer.setAttribute('rotation-per-second', `${randomRotationSpeed}deg`);
+                    modelViewer.setAttribute('camera-controls', '');
+                    modelViewer.setAttribute('disable-zoom', '');
+                    modelViewer.setAttribute('touch-action', 'none');
+                    container.appendChild(modelViewer);
+                    modelsToShow.push(modelViewer);
+                }
+            });
+
+        </script>
+
+
+
+    </body>
+</html>
