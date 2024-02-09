@@ -26,17 +26,34 @@
                 overflow: hidden;
             }
 
+            #counterDisplay {
+                font-weight: bold;
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                color: #337c59;
+                padding: 10px;
+            }
+            
+            a {
+                padding: 10px;
+                color: white;
+            }
+
         </style>
     </head>
     <body>
         <div id="modelViewersContainer"></div>
+        <div id="counterDisplay">Felyx deployed: 0</div>
+        <a href="https://pedrogilfarias.com/">&#9432;</a>
 
 
         <script>
             const container = document.getElementById('modelViewersContainer');
             let modelsToShow = [];
+            let counter = 0; // Initialize the counter
 
-            for (let i = 0; i < 75; i++) {
+            for (let i = 0; i < 200; i++) {
                 const modelViewer = document.createElement('model-viewer');
                 modelViewer.setAttribute('style', 'display: none; position: absolute;');
                 modelViewer.setAttribute('src', 'public/Felyx.glb');
@@ -63,6 +80,14 @@
                     modelViewer.style.left = `${randomX}px`;
                     modelViewer.style.top = `${randomY}px`;
                     modelViewer.style.display = 'block';
+
+                    // Increment and display the counter
+                    counter++;
+                    document.getElementById('counterDisplay').textContent = `Felyx Deployed: ${counter}`;
+
+                    // Ensure the modelViewer is shown
+                    modelViewer.style.display = 'block';
+
                 }
             })
             window.addEventListener('contextmenu', function(event) {
@@ -75,7 +100,7 @@
                 }
                 // Optionally, repopulate modelsToShow array if you plan to add models again
                 modelsToShow = [];
-                for (let i = 0; i < 75; i++) {
+                for (let i = 0; i < 200; i++) {
                     const modelViewer = document.createElement('model-viewer');
                     modelViewer.setAttribute('style', 'display: none; position: absolute;');
                     modelViewer.setAttribute('src', 'public/Felyx.glb');
