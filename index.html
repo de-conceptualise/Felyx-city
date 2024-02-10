@@ -8,97 +8,97 @@
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
         <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
         <style>
-    model-viewer {
-        position: absolute;
-        display: none;
-        width: 400px; /* Fixed size for consistency */
-        height: 400px;
-        z-index: 0;
-    }
-    model-viewer::part(default-progress-bar) {
-        width: 0%;
-    }
+            model-viewer {
+                position: absolute;
+                display: none;
+                width: 400px; /* Fixed size for consistency */
+                height: 400px;
+                z-index: 0;
+            }
+            model-viewer::part(default-progress-bar) {
+                width: 0%;
+            }
 
-    body, button, #counterDisplay, a {
-        font-family: 'Arial', sans-serif;
-    }
-    html, body {
-        background-color: black;
-        overflow: hidden;
-    }
+            body, button, #counterDisplay, a {
+                font-family: 'Arial', sans-serif;
+            }
+            html, body {
+                background-color: black;
+                overflow: hidden;
+            }
 
-    button {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        background: #337c59;
-        color: white;
-        border: none;
-        cursor: pointer;
-        border-radius: 10px; /* Adjusted for consistent appearance */
-    }
+            button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background: #337c59;
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 10px; /* Adjusted for consistent appearance */
+            }
 
-    #counterDisplay, a {
-        font-size: 16px; /* Increased font size for readability */
-        font-weight: bold;
-        color: #337c59;
-        padding: 10px;
-    }
+            #counterDisplay, a {
+                font-size: 16px; /* Increased font size for readability */
+                font-weight: bold;
+                color: #337c59;
+                padding: 10px;
+            }
 
-    #counterDisplay {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-    }
+            #counterDisplay {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+            }
 
-    a {
-        padding: 10px;
-        font-size: 20px;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        text-decoration: none;
-    }
+            a {
+                padding: 10px;
+                font-size: 20px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                text-decoration: none;
+            }
 
-    #showModelBtn, #resetBtn {
-        width: auto; /* Use auto width for text content */
-        height: auto; /* Use auto height for content */
-        z-index: 2;
-        position: fixed;
-        font-size: 16px;
-        padding: 16px;
-        top: 0;
-        margin: 10px;
-        border-radius: 2vw;
-    }
-    
-    #showModelBtn {
-        left: 0;
-        background-size: cover; /* Ensure logo covers the button */
-        background-image: url('public/Felyx-logo-32752_800x675.png'); /* Ensure the path is correct */
-    background-size: contain; /* Adjust this to 'cover' if you want the image to fill the button */
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100px; /* Set a specific width */
-    height: 50px; /* Set a specific height */
-    }
+            #showModelBtn, #resetBtn {
+                width: auto; /* Use auto width for text content */
+                height: auto; /* Use auto height for content */
+                z-index: 2;
+                position: fixed;
+                font-size: 16px;
+                padding: 16px;
+                top: 0;
+                margin: 10px;
+                border-radius: 2vw;
+            }
 
-    #resetBtn {
-        right: 0;
-    }
+            #showModelBtn {
+                left: 0;
+                background-size: cover; /* Ensure logo covers the button */
+                background-image: url('public/Felyx-logo-32752_800x675.png'); /* Ensure the path is correct */
+                background-size: contain; /* Adjust this to 'cover' if you want the image to fill the button */
+                background-repeat: no-repeat;
+                background-position: center;
+                width: 100px; /* Set a specific width */
+                height: 50px; /* Set a specific height */
+            }
 
-    @media (max-width: 600px) {
-        button, #counterDisplay, a, #showModelBtn, #resetBtn {
-            font-size: 16px; /* Larger font size for smaller screens */
-            padding: 12px; /* Larger padding for better touch targets */
-            border-radius: 32px; /* Adjusted border-radius for visual consistency */
-        }
-        model-viewer {
-            width: 200px; /* Responsive size for model-viewer */
-            height: 200px;
-        }
-    }
-</style>
+            #resetBtn {
+                right: 0;
+            }
+
+            @media (max-width: 600px) {
+                button, #counterDisplay, a, #showModelBtn, #resetBtn {
+                    font-size: 16px; /* Larger font size for smaller screens */
+                    padding: 12px; /* Larger padding for better touch targets */
+                    border-radius: 32px; /* Adjusted border-radius for visual consistency */
+                }
+                model-viewer {
+                    width: 200px; /* Responsive size for model-viewer */
+                    height: 200px;
+                }
+            }
+        </style>
 
     </head>
     <body>
@@ -137,11 +137,11 @@
                     const modelWidth = 400; // Correct width
                     const modelHeight = 400; // Correct height
 
-                     // Adjust dimensions for mobile devices
-        if (window.innerWidth <= 600) {
-            modelWidth = 200; // Updated width for mobile
-            modelHeight = 200; // Updated height for mobile
-        }
+                    // Adjust dimensions for mobile devices
+                    if (window.innerWidth <= 600) {
+                        modelWidth = 200; // Updated width for mobile
+                        modelHeight = 200; // Updated height for mobile
+                    }
                     const maxWidth = window.innerWidth - modelWidth; // Prevents overflow on the x-axis
                     const maxHeight = window.innerHeight - modelHeight; // Prevents overflow on the y-axis
                     const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
