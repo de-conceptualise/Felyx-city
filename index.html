@@ -2,17 +2,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Hello, World! - A-Frame</title>
-        <meta name="description" content="Felyx Fixation">
+        <title>Felyx City</title>
+        <meta name="description" content="Felyx City">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
         <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
         <style>
             model-viewer {
                 position: absolute;
                 display: none;
-                width: 300px;
+                width: 400px;
                 height: 400px;
-                z-index: 1;
+                z-index: 0;
             }
             model-viewer::part(default-progress-bar){
                 width: 0%;
@@ -33,11 +33,36 @@
                 right: 0;
                 color: #337c59;
                 padding: 10px;
+                font-size: 1vw;
             }
+
+
 
             a {
                 padding: 10px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
                 color: white;
+                font-size: 1vw;
+            }
+
+            #showModelBtn {
+                z-index: 2;
+                position: fixed;
+                top:0;
+                margin: 10px;
+                left: 0;
+                font-size: 1vw;
+            }
+
+            #resetBtn {
+                z-index: 2;
+                position: fixed;
+                top:0;
+                margin: 10px;
+                right: 0;
+                font-size: 1vw;
             }
 
         </style>
@@ -45,10 +70,14 @@
     <body>
         <div id="modelViewersContainer"></div>
         <div id="counterDisplay">Felyx deployed: 0</div>
-        <a href="https://pedrogilfarias.com/">&#9432;</a>
+        <a href="https://pedrogilfarias.com/felyx-city/">&#9432;</a>
+        <button id="showModelBtn">Deploy</button>
+        <button id="resetBtn">Reset</button>
+
 
 
         <script>
+
             const container = document.getElementById('modelViewersContainer');
             let modelsToShow = [];
             let counter = 0; // Initialize the counter
@@ -71,7 +100,7 @@
             function handleClick() {
                 if (modelsToShow.length > 0) {
                     const modelViewer = modelsToShow.shift();
-                    const modelWidth = 300; // Correct width
+                    const modelWidth = 400; // Correct width
                     const modelHeight = 400; // Correct height
                     const maxWidth = window.innerWidth - modelWidth; // Prevents overflow on the x-axis
                     const maxHeight = window.innerHeight - modelHeight; // Prevents overflow on the y-axis
@@ -88,16 +117,21 @@
                     // Ensure the modelViewer is shown
                     modelViewer.style.display = 'block';
 
-                }
-            })
-            window.addEventListener('contextmenu', function(event) {
-                event.preventDefault(); // Prevent the default right-click menu
+                };
+            }
+            document.getElementById('showModelBtn').addEventListener('click', handleClick);
+
+            document.getElementById('resetBtn').addEventListener('click', function() {
                 // Reset logic here
                 // For example, remove all model-viewer elements from the container
                 const container = document.getElementById('modelViewersContainer');
                 while (container.firstChild) {
                     container.removeChild(container.firstChild);
                 }
+                // Reset the modelsToShow array and counter
+                modelsToShow = [];
+                counter = 0;
+                document.getElementById('counterDisplay').textContent = `Felyx deployed: ${counter}`;
                 // Optionally, repopulate modelsToShow array if you plan to add models again
                 modelsToShow = [];
                 for (let i = 0; i < 200; i++) {
@@ -116,9 +150,7 @@
                 }
             });
 
-            // Listen for both click and touchstart events
-            window.addEventListener('click', handleClick);
-            window.addEventListener('touchstart', handleClick);
+
 
         </script>
 
