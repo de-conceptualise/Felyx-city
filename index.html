@@ -33,7 +33,7 @@
                 right: 0;
                 color: #337c59;
                 padding: 10px;
-                font-size: 1vw;
+                font-size: 16px;
             }
 
 
@@ -44,25 +44,52 @@
                 bottom: 0;
                 left: 0;
                 color: white;
-                font-size: 1vw;
+                font-size: 16px;
             }
 
             #showModelBtn {
                 z-index: 2;
                 position: fixed;
                 top:0;
+                padding: 2;
                 margin: 10px;
                 left: 0;
-                font-size: 1vw;
+                font-size: 16px;
             }
 
             #resetBtn {
                 z-index: 2;
                 position: fixed;
                 top:0;
+padding: 2;
                 margin: 10px;
                 right: 0;
-                font-size: 1vw;
+                font-size: 16px;
+            }
+            
+            
+            @media (max-width: 600px) {
+                
+                #counterDisplay, a, #showModelBtn, #resetBtn{
+                    font-size: 20px;
+        
+                }
+                
+                #showModelBtn, #resetBtn{
+                    padding: 5;
+                }
+            }
+            
+            @media (min-width: 601px) and (max-width: 900px) {
+                #counterDisplay, a, #showModelBtn, #resetBtn{
+                    font-size: 20px;
+        
+                }
+                
+                #showModelBtn, #resetBtn{
+                    padding: 5;
+                }
+            }
             }
 
         </style>
