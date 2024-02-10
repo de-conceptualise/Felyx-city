@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Felyx.City</title>
-        <meta name="description" content="Felyx City">
+        <title>Hello, World! - A-Frame</title>
+        <meta name="description" content="Felyx Fixation">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
         <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
         <style>
@@ -34,7 +34,7 @@
                 color: #337c59;
                 padding: 10px;
             }
-            
+
             a {
                 padding: 10px;
                 color: white;
@@ -45,7 +45,7 @@
     <body>
         <div id="modelViewersContainer"></div>
         <div id="counterDisplay">Felyx deployed: 0</div>
-        <a href="https://pedrogilfarias.com/felyx-city/">&#9432;</a>
+        <a href="https://pedrogilfarias.com/">&#9432;</a>
 
 
         <script>
@@ -68,7 +68,7 @@
                 modelsToShow.push(modelViewer);
             }
 
-            window.addEventListener('click', function() {
+            function handleClick() {
                 if (modelsToShow.length > 0) {
                     const modelViewer = modelsToShow.shift();
                     const modelWidth = 300; // Correct width
@@ -115,6 +115,10 @@
                     modelsToShow.push(modelViewer);
                 }
             });
+
+            // Listen for both click and touchstart events
+            window.addEventListener('click', handleClick);
+            window.addEventListener('touchstart', handleClick);
 
         </script>
 
