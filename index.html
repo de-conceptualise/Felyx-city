@@ -26,6 +26,34 @@
                 overflow: hidden;
             }
 
+            button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                padding: 2vw; /* Responsive padding */
+                font-size: 1.5vw; /* Responsive font size */
+                background: #337c59; /* Example button color */
+                color: white; /* Text color */
+                border: none; /* Remove border */
+                cursor: pointer; /* Pointer cursor on hover */
+}
+
+@media (max-width: 600px) {
+    button, #counterDisplay, a {
+        font-size: 4vw; /* Larger font size for smaller screens */
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    button, #counterDisplay, a {
+        font-size: 3vw; /* Adjust for tablets */
+    }
+}
+
+#counterDisplay, a {
+    font-size: 2vw; /* Initial responsive font size */
+}
+
             #counterDisplay {
                 font-weight: bold;
                 position: fixed;
@@ -33,7 +61,6 @@
                 right: 0;
                 color: #337c59;
                 padding: 10px;
-                font-size: 16px;
             }
 
 
@@ -63,35 +90,9 @@
                 top:0;
                 padding: 2;
                 margin: 10px;
-                right: 0;
-                font-size: 16px;
+                right: 0;           
             }
-            
-            
-            @media (max-width: 600px) {
-                
-                #counterDisplay, a, button {
-                    font-size: 24px;
         
-                }
-                
-                button {
-                    padding: 5;
-                    margin: 15;
-                }
-            }
-            
-            @media (min-width: 601px) and (max-width: 900px) {
-                #counterDisplay, a, button {
-                    font-size: 20px;
-        
-                }
-                
-                #showModelBtn, #resetBtn{
-                    padding: 5;
-                    margin: 15;
-                }
-            }
             }
 
         </style>
