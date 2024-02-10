@@ -136,6 +136,12 @@
                     const modelViewer = modelsToShow.shift();
                     const modelWidth = 400; // Correct width
                     const modelHeight = 400; // Correct height
+
+                     // Adjust dimensions for mobile devices
+        if (window.innerWidth <= 600) {
+            modelWidth = 200; // Updated width for mobile
+            modelHeight = 200; // Updated height for mobile
+        }
                     const maxWidth = window.innerWidth - modelWidth; // Prevents overflow on the x-axis
                     const maxHeight = window.innerHeight - modelHeight; // Prevents overflow on the y-axis
                     const randomX = Math.max(0, Math.floor(Math.random() * maxWidth));
