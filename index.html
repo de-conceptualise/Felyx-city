@@ -7,107 +7,98 @@
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
         <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
         <style>
-            model-viewer {
-                position: absolute;
-                display: none;
-                width: 400px;
-                height: 400px;
-                z-index: 0;
-            }
-            model-viewer::part(default-progress-bar){
-                width: 0%;
-            }
+    model-viewer {
+        position: absolute;
+        display: none;
+        width: 400px; /* Fixed size for consistency */
+        height: 400px;
+        z-index: 0;
+    }
+    model-viewer::part(default-progress-bar) {
+        width: 0%;
+    }
 
-            body {
-                overflow: hidden;
-            } 
+    body, button, #counterDisplay, a {
+        font-family: 'Arial', sans-serif;
+    }
+    html, body {
+        background-color: black;
+        overflow: hidden;
+    }
 
-            body, button, #counterDisplay, a {
-                font-family: 'Arial', sans-serif; /* Example: Arial, or any preferred sans-serif font */
-            }
-            html {
-                background-color: black;
-                overflow: hidden;
-            }
+    button {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: #337c59;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 10px; /* Adjusted for consistent appearance */
+    }
 
-            button {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                padding: 1vw; /* Responsive padding */
-                font-size: 1.5vw; /* Responsive font size */
-                background: #337c59; /* Example button color */
-                color: white; /* Text color */
-                border: none; /* Remove border */
-                cursor: pointer; /* Pointer cursor on hover */
-                border-radius: 2vw;
-            }
+    #counterDisplay, a {
+        font-size: 16px; /* Increased font size for readability */
+        font-weight: bold;
+        color: #337c59;
+        padding: 10px;
+    }
 
-            @media (max-width: 600px) {
-                button, #counterDisplay, a, #showModelBtn, #resetBtn {
-                    font-size: 6vw; /* Larger font size for smaller screens */
-                }
-            }
+    #counterDisplay {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
 
-            @media (min-width: 601px) and (max-width: 900px) {
-                button, #counterDisplay, a,  #showModelBtn, #resetBtn {
-                    font-size: 4vw; /* Adjust for tablets */
-                }
-            }
+    a {
+        padding: 10px;
+        font-size: 20px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        text-decoration: none;
+    }
 
-            #counterDisplay, a,  #showModelBtn, #resetBtn {
-                font-size: 2vw; /* Initial responsive font size */
-            }
-
-            #counterDisplay {
-                font-weight: bold;
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                color: #337c59;
-                padding: 10px;
-                font: non-serif;
-            }
-
-
-
-            a {
-                padding: 10px;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                color: white;
-                text-decoration: none;
-                color: #337c59;
-
-            }
-
-            #showModelBtn {
-                width: 100px; /* Adjust width as needed */
-                height: 50px; /* Adjust height as needed */
-                z-index: 2;
-                position: fixed;
-                top:0;
-                margin: 10px;
-                left: 0;
-                background-image: url('public/Felyx-logo-32752_800x675.png'); 
-                background-size: contain;
-                background-repeat: no-repeat;
+    #showModelBtn, #resetBtn {
+        width: auto; /* Use auto width for text content */
+        height: auto; /* Use auto height for content */
+        z-index: 2;
+        position: fixed;
+        font-size: 16px;
+        padding: 16px;
+        top: 0;
+        margin: 10px;
+        border-radius: 2vw;
+    }
+    
+    #showModelBtn {
+        left: 0;
+        background-size: cover; /* Ensure logo covers the button */
+        background-image: url('public/Felyx-logo-32752_800x675.png'); /* Ensure the path is correct */
+    background-size: contain; /* Adjust this to 'cover' if you want the image to fill the button */
+    background-repeat: no-repeat;
     background-position: center;
-            }
+    width: 100px; /* Set a specific width */
+    height: 50px; /* Set a specific height */
+    }
 
-            #resetBtn {
-                z-index: 2;
-                position: fixed;
-                top:0;
-                padding: 2;
-                margin: 10px;
-                right: 0;           
-            }
+    #resetBtn {
+        right: 0;
+    }
 
-            }
+    @media (max-width: 600px) {
+        button, #counterDisplay, a, #showModelBtn, #resetBtn {
+            font-size: 20px; /* Larger font size for smaller screens */
+            padding: 16px; /* Larger padding for better touch targets */
+            border-radius: 40px; /* Adjusted border-radius for visual consistency */
+        }
+        model-viewer {
+            width: 90vw; /* Responsive size for model-viewer */
+            height: 90vw;
+        }
+    }
+</style>
 
-        </style>
     </head>
     <body>
         <div id="modelViewersContainer"></div>
