@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
         <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.1/dist/es-module-shims.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
         <style>
             model-viewer {
                 position: absolute;
@@ -20,11 +21,12 @@
             }
 
             body, button, #counterDisplay, a {
-                font-family: 'Arial', sans-serif;
+                font-family: 'Poppins', sans-serif;
             }
             html, body {
-                background-color: black;
                 overflow: hidden;
+                background-color: black;
+
             }
 
             button {
@@ -36,6 +38,12 @@
                 border: none;
                 cursor: pointer;
                 border-radius: 10px; /* Adjusted for consistent appearance */
+            }
+            
+            button:hover {
+
+                color: #337c59;
+
             }
 
             #counterDisplay, a {
@@ -60,6 +68,11 @@
                 text-decoration: none;
             }
 
+            a:hover {
+                color: #337c59;
+
+            }
+
             #showModelBtn, #resetBtn {
                 width: auto; /* Use auto width for text content */
                 height: auto; /* Use auto height for content */
@@ -70,6 +83,10 @@
                 top: 0;
                 margin: 10px;
                 border-radius: 2vw;
+            }
+
+            #showModelBtn:hover, #resetBtn:hover {
+                background-color: white;
             }
 
             #showModelBtn {
@@ -104,7 +121,7 @@
     <body>
         <div id="modelViewersContainer"></div>
         <div id="counterDisplay">Felyx deployed: 0</div>
-        <a href="https://pedrogilfarias.com/felyx-city/">&#9432;</a>
+        <a href="about.html">&#9432;</a>
         <button id="showModelBtn"></button>
         <button id="resetBtn">Reset</button>
 
@@ -122,7 +139,7 @@
                 modelViewer.setAttribute('src', 'public/Felyx.glb');
                 modelViewer.setAttribute('auto-rotate', '');
                 modelViewer.setAttribute('auto-rotate-delay', '0');
-                const randomRotationSpeed = Math.floor(Math.random() * 720) - 360; // This now includes negative values
+                const randomRotationSpeed = Math.floor(Math.random() * 240) - 120; // This now includes negative values
                 modelViewer.setAttribute('rotation-per-second', `${randomRotationSpeed}deg`);
                 modelViewer.setAttribute('camera-controls', '');
                 modelViewer.setAttribute('disable-zoom', '');
